@@ -2,8 +2,9 @@
 
 ### **"Spreading Knowledge, Strengthening Faith"**  
 
-![Al-IMAMIYAH Banner](https://www.google.com/url?sa=i&url=https%3A%2F%2Fimamiyah.org%2F&psig=AOvVaw3XfAgf_D5_2I3c-3bJ_PL_&ust=1743009133869000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKjvtZXdpYwDFQAAAAAdAAAAABAh?text=Al-IMAMIYAH+Banner)  
-*(Replace with your actual banner image URL)*  
+<p align="center">
+  <img src="logo.png" alt="Al-IMAMIYAH Logo" width="100" height="100">
+</p> 
 
 ---
 
