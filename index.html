@@ -3,269 +3,356 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WAL-ASER • Android</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Wal_Aser</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Playfair+Display:wght@500&amp;display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        
+        :root {
+            --primary: #00D4FF;
+        }
         
         * {
-            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            transition-duration: 150ms;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        .tail-container * {
-            font-family: 'Inter', system_ui, sans-serif;
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0A0A0A;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
         
-        .heading-font {
-            font-family: 'Playfair Display', sans-serif;
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(10, 10, 10, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-
-        .dark-bg {
-            background: radial-gradient(circle at 50% 20%, #0a0a0a 0%, #000000 70%);
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #fff;
         }
-
-        .pattern-bg {
-            background-image: 
-                linear-gradient(45deg, rgba(16, 185, 129, 0.03) 1px, transparent 0),
-                linear-gradient(-45deg, rgba(16, 185, 129, 0.03) 1px, transparent 0);
-            background-size: 60px 60px;
-            opacity: 0.6;
+        
+        .logo img {
+            height: 42px;
+            width: auto;
         }
-
-        .neumorphic {
-            background: #111111;
-            box-shadow: 
-                12px 12px 24px rgba(0, 0, 0, 0.6),
-                -12px -12px 24px rgba(255, 255, 255, 0.03),
-                inset 2px 2px 4px rgba(255, 255, 255, 0.05),
-                inset -2px -2px 4px rgba(0, 0, 0, 0.4);
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -1px;
         }
-
-        .download-btn {
-            background: linear-gradient(145deg, #10b981, #059669);
-            box-shadow: 
-                0 15px 30px -8px rgb(16 185 129),
-                8px 8px 16px rgba(0, 0, 0, 0.5);
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            background: linear-gradient(135deg, #0A0A0A 0%, #1A1A2E 100%);
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.8rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+        
+        .hero-text span {
+            color: var(--primary);
+        }
+        
+        .hero-text p {
+            font-size: 1.35rem;
+            opacity: 0.85;
+            margin-bottom: 40px;
+            max-width: 480px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 16px 32px;
+            border-radius: 9999px;
             font-size: 1.1rem;
-            padding: 14px 42px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: #000;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgb(0 212 255);
+        }
+        
+        .btn-outline {
+            border: 2px solid #fff;
+            color: #fff;
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background: #fff;
+            color: #000;
+        }
+        
+        .hero-image {
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            max-width: 580px;
+            border-radius: 30px;
+            box-shadow: 0 40px 60px -15px rgba(0, 212, 255, 0.3);
+        }
+        
+        .features {
+            padding: 100px 5%;
+            background: #111;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 70px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: #1A1A1A;
+            border-radius: 24px;
+            padding: 40px 30px;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 24px;
+            border-radius: 16px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        
+        .download-section {
+            padding: 120px 5%;
+            background: linear-gradient(135deg, #1A1A2E, #0A0A0A);
+            text-align: center;
+        }
+        
+        .download-section h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .download-btn {
+            background: #000;
+            color: #fff;
+            border: 3px solid var(--primary);
+            padding: 20px 60px;
+            font-size: 1.4rem;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 40px;
+            text-decoration: none;
+            transition: all 0.4s;
         }
         
         .download-btn:hover {
-            transform: translateY(-2px) scale(1.04);
-        }
-
-        .phone-frame {
-            width: 260px;
-            height: 520px;
-            background: #0a0a0a;
-            border-radius: 52px;
-            padding: 12px;
-            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.6);
-            position: relative;
-            flex-shrink: 0;
+            background: var(--primary);
+            color: #000;
+            transform: scale(1.05);
         }
         
-        .phone-frame::before {
-            content: '';
-            position: absolute;
-            top: 14px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 130px;
-            height: 28px;
-            background: #0a0a0a;
-            border-radius: 30px;
-            z-index: 10;
+        .footer {
+            background: #050505;
+            padding: 80px 5% 40px;
+            text-align: center;
         }
         
-        .phone-screen {
-            width: 100%;
-            height: 100%;
-            background: #111111;
-            border-radius: 42px;
-            overflow: hidden;
-            box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
-        }
-
-        .slider-container {
-            scrollbar-width: none;
-        }
-        .slider-container::-webkit-scrollbar { display: none; }
-        
-        .slide { scroll-snap-align: center; flex-shrink: 0; }
-    </style>
-</head>
-<body class="tail-container no-scroll dark-bg text-white">
-    <div class="min-h-screen flex items-center justify-center p-8 pattern-bg relative">
-        
-        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
             
-            <!-- Left: Hero -->
-            <div class="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left">
-                
-                <!-- Exact logo from your uploaded image -->
-                <div class="mb-8">
-                    <img src="logo.jpg" 
-                         alt="WAL-ASER Logo" class="w-24 h-24 mx-auto drop-shadow-2xl">
-                </div>
-
-                <h1 class="heading-font text-7xl lg:text-8xl font-medium tracking-[-3px] mb-2">WAL-ASER</h1>
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="h-px w-12 bg-[#10b981]"></div>
-                    <span class="uppercase text-[#10b981] text-sm font-medium tracking-[3px]">ISLAMIC • MODERN • URDU</span>
-                    <div class="h-px w-12 bg-[#10b981]"></div>
-                </div>
-                
-                <p class="text-4xl lg:text-5xl font-light leading-none mb-6 max-w-md">
-                    Prayer • Quran • Dua • Peace
-                </p>
-                
-                <p class="text-xl text-gray-400 max-w-sm mb-10">
-                    Beautifully designed for your daily ibadah.<br>
-                    Real-time Srinagar azan • Timeless guidance.
-                </p>
-
-                <!-- ONLY ANDROID + SMALL DOWNLOAD BUTTON -->
-                <div onclick="handleDownload()" id="download-button"
-                     class="download-btn cursor-pointer flex items-center justify-center gap-3 text-white mx-auto lg:mx-0 rounded-3xl">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v-4m0 0l4 4m-4-4l4-4m12 0v4m0 0l-4-4m4 4l-4 4" />
-                    </svg>
-                    <div class="text-left">
-                        <div class="font-medium">DOWNLOAD FOR ANDROID</div>
-                        <div class="text-xs tracking-widest opacity-90">APK • Google Play</div>
-                    </div>
-                </div>
-
-                <!-- Trust -->
-                <div class="flex items-center gap-8 mt-12 text-sm opacity-60">
-                    <div class="flex items-center gap-1.5">
-                        <span class="text-[#10b981]">★</span>
-                        <span>4.98</span>
-                    </div>
-                    <div>1.8M+ Muslims</div>
-                    <div class="text-emerald-400">4.9 Play Store</div>
-                </div>
-            </div>
-
-            <!-- Right: Exact your uploaded images in small slider -->
-            <div class="lg:col-span-7">
-                <div class="relative">
-                    <div id="slider" class="flex gap-6 overflow-x-auto slider-container snap-x snap-mandatory pb-6">
-                        
-                        <!-- 1. Exact Prayer Times screenshot -->
-                        <div class="slide w-[260px]">
-                            <div class="phone-frame">
-                                <img src="https://files.oaiusercontent.com/file-FiT6J?se=2026-04-15T00%3A00%3A00Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3D1000415716&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" 
-                                     alt="Prayer Times" class="w-full h-full object-cover rounded-[42px]">
-                            </div>
-                        </div>
-
-                        <!-- 2. Exact Home Grid screenshot -->
-                        <div class="slide w-[260px]">
-                            <div class="phone-frame">
-                                <img src="https://files.oaiusercontent.com/file-DIJQm?se=2026-04-15T00%3A00%3A00Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3D1000415722&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" 
-                                     alt="App Grid" class="w-full h-full object-cover rounded-[42px]">
-                            </div>
-                        </div>
-
-                        <!-- 3. Exact Daily Dua screenshot -->
-                        <div class="slide w-[260px]">
-                            <div class="phone-frame">
-                                <img src="https://files.oaiusercontent.com/file-7L8HG?se=2026-04-15T00%3A00%3A00Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3D1000415717&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" 
-                                     alt="Daily Dua" class="w-full h-full object-cover rounded-[42px]">
-                            </div>
-                        </div>
-
-                        <!-- 4. Exact Quran Surah screenshot -->
-                        <div class="slide w-[260px]">
-                            <div class="phone-frame">
-                                <img src="https://files.oaiusercontent.com/file-dDqUa?se=2026-04-15T00%3A00%3A00Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3D1000415720&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" 
-                                     alt="Quran Baqarah" class="w-full h-full object-cover rounded-[42px]">
-                            </div>
-                        </div>
-
-                        <!-- 5. Exact second Grid screenshot -->
-                        <div class="slide w-[260px]">
-                            <div class="phone-frame">
-                                <img src="https://files.oaiusercontent.com/file-DIJQm?se=2026-04-15T00%3A00%3A00Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3D1000415722&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" 
-                                     alt="Full Grid" class="w-full h-full object-cover rounded-[42px]">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Small slider dots -->
-                    <div class="flex justify-center gap-2 mt-6">
-                        <div onclick="scrollToSlide(0)" class="w-2 h-2 bg-[#10b981] rounded-full cursor-pointer"></div>
-                        <div onclick="scrollToSlide(1)" class="w-2 h-2 bg-white/40 hover:bg-white/70 rounded-full cursor-pointer"></div>
-                        <div onclick="scrollToSlide(2)" class="w-2 h-2 bg-white/40 hover:bg-white/70 rounded-full cursor-pointer"></div>
-                        <div onclick="scrollToSlide(3)" class="w-2 h-2 bg-white/40 hover:bg-white/70 rounded-full cursor-pointer"></div>
-                        <div onclick="scrollToSlide(4)" class="w-2 h-2 bg-white/40 hover:bg-white/70 rounded-full cursor-pointer"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Toast -->
-        <div id="download-toast" onclick="this.classList.add('hidden')" 
-             class="hidden fixed bottom-8 left-1/2 -translate-x-1/2 bg-[#111111] text-white text-lg px-8 py-4 rounded-3xl shadow-2xl flex items-center gap-3 neumorphic">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-            </svg>
-            <span id="toast-text">Downloading WAL-ASER APK...</span>
-        </div>
-    </div>
-
-    <script>
-        function handleDownload() {
-            const btn = document.getElementById('download-button');
-            const toast = document.getElementById('download-toast');
-            const toastText = document.getElementById('toast-text');
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
             
-            const original = btn.innerHTML;
-            btn.style.transform = 'scale(0.92)';
-            
-            btn.innerHTML = `
-                <svg class="w-7 h-7 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
-                </svg>
-                <div>DOWNLOADING APK...</div>
-            `;
-            
-            toast.classList.remove('hidden');
-            toastText.textContent = 'Downloading WAL-ASER APK...';
-            
-            setTimeout(() => {
-                toastText.innerHTML = `✓ APK Downloaded!<br><span class="text-xs opacity-70">Install &amp; open WAL-ASER</span>`;
-                btn.innerHTML = original;
-                btn.style.transform = '';
-                createConfetti();
-                setTimeout(() => toast.classList.add('hidden'), 3800);
-            }, 2200);
-        }
-
-        function createConfetti() {
-            for (let i = 0; i < 65; i++) {
-                const c = document.createElement('div');
-                c.style.position = 'fixed'; c.style.zIndex = '99999';
-                c.style.left = Math.random() * 100 + 'vw';
-                c.style.top = '-20px';
-                c.style.width = '9px'; c.style.height = '9px';
-                c.style.background = Math.random() > 0.5 ? '#10b981' : '#d4af77';
-                c.style.borderRadius = Math.random() > 0.6 ? '50%' : '3px';
-                document.body.appendChild(c);
-                c.animate([{transform:'translateY(0) rotate(0deg)'},{transform:`translateY(\( {window.innerHeight+200}px) rotate( \){Math.random()*900}deg)`}],{duration:Math.random()*3200+1800,easing:'cubic-bezier(0.25,0.1,0.25,1)'});
-                setTimeout(() => c.remove(), 5200);
+            .nav-links {
+                display: none;
             }
         }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <!-- Logo path unchanged as per your instruction -->
+            <img src="logo.png" alt="Wal_Aser Logo">
+            <span class="logo-text">Wal_Aser</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#">Features</a></li>
+            <li><a href="#">How it Works</a></li>
+            <li><a href="#">Security</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Support</a></li>
+        </ul>
+    </nav>
 
-        function scrollToSlide(i) {
-            document.getElementById('slider').children[i].scrollIntoView({behavior:'smooth', inline:'center'});
-        }
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Secure. Simple.<br>Next-Gen <span>Wallet</span></h1>
+                <p>Experience the future of digital assets with Wal_Aser. Lightning-fast transactions, institutional-grade security, and seamless cross-chain support — all in one beautiful app.</p>
+                
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary">Get Started Free</a>
+                    <a href="#" class="btn btn-outline">Watch Demo</a>
+                </div>
+                
+                <p style="margin-top: 40px; font-size: 1.1rem; opacity: 0.7;">
+                    ⭐️ Rated 4.98/5 by 187,492 users
+                </p>
+            </div>
+            
+            <!-- Main hero image changed to img1.jpg -->
+            <div class="hero-image">
+                <img src="img1.jpg" alt="Wal_Aser App Preview">
+            </div>
+        </div>
+    </section>
 
-        console.log('%c✅ WAL-ASER Android page ready • Only Android button (small) • Exact your uploaded images in slider', 'color:#10b981; font-size:10px');
-    </script>
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">Why millions trust Wal_Aser</h2>
+        
+        <div class="features-grid">
+            <!-- Feature 1 image changed to img2.jpg -->
+            <div class="feature-card">
+                <img src="img2.jpg" alt="Instant Transfers">
+                <h3>Lightning Transfers</h3>
+                <p>Send and receive crypto instantly across 28 blockchains with zero fees on select networks.</p>
+            </div>
+            
+            <!-- Feature 2 image changed to img3.jpg -->
+            <div class="feature-card">
+                <img src="img3.jpg" alt="Bank-Level Security">
+                <h3>Bank-Level Security</h3>
+                <p>Multi-signature vaults, biometric login, and military-grade encryption keep your assets safe 24/7.</p>
+            </div>
+            
+            <!-- Feature 3 image changed to img4.jpg -->
+            <div class="feature-card">
+                <img src="img4.jpg" alt="Earn Rewards">
+                <h3>Earn While You Hold</h3>
+                <p>Stake your assets and earn up to 18% APY with automated yield farming across multiple protocols.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section">
+        <h2>Ready to secure your future?</h2>
+        <p style="font-size: 1.4rem; max-width: 600px; margin: 0 auto 20px;">
+            Download Wal_Aser now and get $50 in BTC when you complete your first transaction.
+        </p>
+        
+        <!-- App download button now links to Wal_Aser-1.apk in the same folder -->
+        <a href="Wal_Aser-1.apk" class="download-btn" download>
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v-4m0 0l4 4m-4-4l4-4m12 0v4m0 0l-4-4m4 4l-4 4" />
+            </svg>
+            Download APK (Wal_Aser-1.apk)
+        </a>
+        
+        <p style="margin-top: 30px; opacity: 0.6; font-size: 1rem;">
+            For Android • Version 1.8.4 • 87 MB
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Wal_Aser. All rights reserved.</p>
+        <p style="margin-top: 12px; opacity: 0.5; font-size: 0.95rem;">
+            Made with ❤️ for the decentralized future
+        </p>
+    </footer>
 </body>
 </html>
